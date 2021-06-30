@@ -8,7 +8,7 @@ import Constant.Constant;
 public class GeneralPage {
     private final By tabLogin = By.xpath("//div[@id='menu']//a[@href='/Account/Login.cshtml']");
     private final By tabLogout = By.xpath("//div[@id='menu']//a[@href='/Account/Logout']");
-    private final By lblWelcomeMessage = By.xpath("//div[@class='account']/strong");
+    private final By lblWelcomeMessage = By.xpath("//div[@class='account']/strong[normalize-space(text())]");
 
     protected WebElement getTabLogin(){
         return Constant.WEBDRIVER.findElement(tabLogin);
@@ -31,5 +31,12 @@ public class GeneralPage {
         this.getTabLogin().click();
         return new LoginPage();
     }
+
+    public HomePage logout(){
+        this.getTabLogout().click();
+        return new HomePage();
+    }
+
+
 
 }
