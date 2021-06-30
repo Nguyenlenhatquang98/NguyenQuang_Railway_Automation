@@ -29,7 +29,7 @@ public class LoginTest {
     @AfterMethod
     public void afterMethod(){
         System.out.println("Post-condition");
-        //Constant.WEBDRIVER.quit();
+        Constant.WEBDRIVER.quit();
     }
     @Test
     public void TC01(){
@@ -45,10 +45,9 @@ public class LoginTest {
         String actualMsg = homepageLoggedIn.getWelcomeMessage();
         String expectedMsg = "Welcome "+ Constant.USERNAME;
 
-        //Assert.assertEquals(actualMsg,expectedMsg, "Welcome message is not displayed as expected");
-
-        homepageLoggedIn.logout();
+        Assert.assertEquals(actualMsg,expectedMsg, "Welcome message is not displayed as expected");
 
 
     }
+
 }
