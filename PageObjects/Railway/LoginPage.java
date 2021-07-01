@@ -29,13 +29,26 @@ public class LoginPage extends GeneralPage{
     }
 
 
+    public boolean isElementExist(By locator){
+        try{
+            Constant.WEBDRIVER.findElement(locator);
+            return true;
+        }catch (org.openqa.selenium.NoSuchElementException e){
+            return false;
+        }
+    }
 
 
-    public HomePage login(String username, String password){
+    public GeneralPage login(String username, String password){
         this.getTxtUsername().sendKeys(username);
         this.getTxtPassword().sendKeys(password);
         this.getBtnLogin().click();
-        return new HomePage();
+        if(isElementExist(_lblLoginErrorMsg)){
+            return new LoginPage();
+        }
+        else{
+            return new HomePage();
+        }
     }
 
 }

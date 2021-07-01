@@ -40,7 +40,7 @@ public class LoginTest {
 
         LoginPage loginPage = homepage.gotoLoginPage();
 
-        HomePage homepageLoggedIn = loginPage.login(Constant.USERNAME,Constant.PASSWORD);
+        GeneralPage homepageLoggedIn = loginPage.login(Constant.USERNAME,Constant.PASSWORD);
 
         String actualMsg = homepageLoggedIn.getWelcomeMessage();
         String expectedMsg = "Welcome "+ Constant.USERNAME;
@@ -58,13 +58,12 @@ public class LoginTest {
 
         LoginPage loginPage = homepage.gotoLoginPage();
 
-        HomePage homepageLoggedIn = loginPage.login(Constant.USERNAME,Constant.PASSWORD);
+        loginPage.login("nguyenlenhatquang",Constant.PASSWORD);
 
-        String actualMsg = homepageLoggedIn.getWelcomeMessage();
-        String expectedMsg = "Welcome "+ Constant.USERNAME;
+        String actualMsg = loginPage.getLblLoginErrorMsg().getText();
+        String expectedMsg = "Invalid username or password. Please try again.";
 
         Assert.assertEquals(actualMsg,expectedMsg, "Welcome message is not displayed as expected");
-
 
     }
 
