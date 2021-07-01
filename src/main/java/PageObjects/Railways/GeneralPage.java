@@ -1,4 +1,4 @@
-package Railway;
+package Railways;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -35,6 +35,25 @@ public class GeneralPage {
     public HomePage logout(){
         this.getTabLogout().click();
         return new HomePage();
+    }
+
+
+    public boolean isElementExist(By locator){
+        try{
+            Constant.WEBDRIVER.findElement(locator);
+            return true;
+        }catch (org.openqa.selenium.NoSuchElementException e){
+            return false;
+        }
+    }
+
+    public boolean checklblWelcomeExist(){
+        if(isElementExist(this.lblWelcomeMessage)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 

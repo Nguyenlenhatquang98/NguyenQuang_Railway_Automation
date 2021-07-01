@@ -3,6 +3,6 @@ package Common;
 public class Utilities {
 
     public static final String getProjectPath(){
-        return "Executables/chromedriver.exe";
+        return "src/main/java/Executables/chromedriver.exe";
     }
 }

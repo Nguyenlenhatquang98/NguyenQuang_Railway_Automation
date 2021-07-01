@@ -1,4 +1,4 @@
-package Railway;
+package Railways;
 
 import Constant.Constant;
 import org.openqa.selenium.By;
@@ -28,15 +28,6 @@ public class LoginPage extends GeneralPage{
         return Constant.WEBDRIVER.findElement(_lblLoginErrorMsg);
     }
 
-
-    public boolean isElementExist(By locator){
-        try{
-            Constant.WEBDRIVER.findElement(locator);
-            return true;
-        }catch (org.openqa.selenium.NoSuchElementException e){
-            return false;
-        }
-    }
 
 
     public GeneralPage login(String username, String password){

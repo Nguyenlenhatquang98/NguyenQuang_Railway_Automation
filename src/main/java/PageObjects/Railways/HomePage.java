@@ -1,4 +1,4 @@
-package Railway;
+package Railways;
 
 import Constant.Constant;
 
