@@ -42,7 +42,8 @@ public class ContactTest {
         System.out.println("TC04 - Contact Email contains correct href value which can help to quickly open Outlook Compose Message dialog");
         ContactPage contactPage = homepage.gotoContactPage();
         String expectedEmail = "mailto:thanh.viet.le@logigear.com";
-        Assert.assertEquals(contactPage.getEmailHref(),expectedEmail, "Error message is not displayed as expected");
+        String actualEmail = contactPage.getEmailHref();
+        Assert.assertEquals(actualEmail,expectedEmail, "Error message is not displayed as expected");
     }
 
 

@@ -51,7 +51,9 @@ public class LoginTest {
         String expectedMsg = "Welcome " + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");*/
 
-        Verify.verify(homepage.checklblWelcomeExist(),"Welcome message is not displayed as expected");
+        boolean checklblWelcomeExist = homepage.checklblWelcomeExist();
+
+        Verify.verify(checklblWelcomeExist,"Welcome message is not displayed as expected");
         homepage.logout();
 
     }
