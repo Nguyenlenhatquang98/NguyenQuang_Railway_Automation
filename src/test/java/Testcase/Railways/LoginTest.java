@@ -1,8 +1,7 @@
-package Railway;
+package Railways;
 
 import Common.Utilities;
 import Constant.Constant;
-import Railways.GeneralPage;
 import Railways.HomePage;
 import Railways.LoginPage;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,7 +49,7 @@ public class LoginTest {
         String expectedMsg = "Welcome " + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");*/
 
-        boolean checklblWelcomeExist = homepage.checklblWelcomeExist();
+        boolean checklblWelcomeExist = loginPage.checklblWelcomeExist();
         if(checklblWelcomeExist==true){
             homepage.logout();
         }
