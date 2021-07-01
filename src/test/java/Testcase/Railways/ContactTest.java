@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class Contact {
+public class ContactTest {
     private HomePage homepage = new HomePage();
 
     @BeforeClass
@@ -41,7 +41,8 @@ public class Contact {
 
         System.out.println("TC04 - Contact Email contains correct href value which can help to quickly open Outlook Compose Message dialog");
         ContactPage contactPage = homepage.gotoContactPage();
-        Assert.assertEquals(contactPage.getEmailHref(),"mailto:thanh.viet.le@logigear.com", "Error message is not displayed as expected");
+        String expectedEmail = "mailto:thanh.viet.le@logigear.com";
+        Assert.assertEquals(contactPage.getEmailHref(),expectedEmail, "Error message is not displayed as expected");
     }
 
 

@@ -79,5 +79,28 @@ public class LoginTest {
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected");
     }
 
+    @Test
+    public void TC05(){
+
+        System.out.println("TC05 - System shows message when user enters wrong password several times");
+        LoginPage loginPage = homepage.gotoLoginPage();
+        String expectedMessage = "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes.";
+        String actualMessage = null;
+        for (int i=0;i<5;i++){
+            loginPage.login(Constant.USERNAME,"nguyenlenhatquang0");
+            if(loginPage.getLblLoginErrorMsg().getText().equals(expectedMessage)){
+                System.out.println("Passed");
+                actualMessage = expectedMessage;
+                break;
+            }
+            else{
+                System.out.println("Failed");
+                actualMessage = loginPage.getLblLoginErrorMsg().getText();
+            }
+        }
+        Assert.assertEquals(actualMessage,expectedMessage,"Error message is not displayed as expected");
+
+    }
+
 
 }
