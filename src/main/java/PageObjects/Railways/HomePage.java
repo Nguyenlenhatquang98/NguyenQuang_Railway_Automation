@@ -1,6 +1,6 @@
-package Railways;
+package PageObjects.Railways;
 
-import Constant.Constant;
+import Common.Constant.Constant;
 
 public class HomePage extends GeneralPage {
 

@@ -1,6 +1,6 @@
-package Railways;
+package PageObjects.Railways;
 
-import Constant.Constant;
+import Common.Constant.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -45,6 +45,17 @@ public class LoginPage extends GeneralPage{
         else{
             return new HomePage();
         }
+    }
+
+    public String getUnableMsgExist(int n){
+        String Result = null;
+        for(int i=0;i<n;i++){
+            this.login(Constant.USERNAME,Constant.INVALID_PASSWORD);
+            if(this.getLblLoginErrorMsg().getText().equals(Constant.CHECK_MSG_INVALID)) {
+                Result = Constant.CHECK_MSG_INVALID;
+            }
+        }
+        return Result;
     }
 
 

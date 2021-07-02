@@ -1,6 +1,6 @@
-package Railways;
+package PageObjects.Railways;
 
-import Constant.Constant;
+import Common.Constant.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,12 +8,12 @@ public class ContactPage extends GeneralPage{
 
     // Locators
 
-    private final By email = By.xpath("//div[@id='content']//a");
+    private final By _email = By.xpath("//div[@id='content']//a");
 
     // Elements
 
     protected WebElement getEmail(){
-        return Constant.WEBDRIVER.findElement(email);
+        return Constant.WEBDRIVER.findElement(_email);
     }
 
     // Methods
