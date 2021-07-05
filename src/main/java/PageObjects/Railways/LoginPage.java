@@ -12,7 +12,7 @@ public class LoginPage extends GeneralPage{
     private final By _txtPassword = By.xpath("//li[@class='password']/input");
     private final By _btnLogin = By.xpath("//p[@class='form-actions']/input");
     private final By _lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
-
+    private final By _lblLoginPage = By.xpath("//div[@id='content']/h1[contains(text(),'Login')]");
 
     // Elements
 
@@ -58,6 +58,12 @@ public class LoginPage extends GeneralPage{
         return Result;
     }
 
+    public String getLoginErrorMsg(){
+        return getLblLoginErrorMsg().getText();
+    }
 
+    public boolean isLoginPageLanding(){
+        return isElementExist(_lblLoginPage);
+    }
 
 }

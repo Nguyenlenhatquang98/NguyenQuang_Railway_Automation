@@ -9,8 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class ContactTest {
-    private HomePage homepage = new HomePage();
+public class ContactTest extends Testbase {
+
 
 
 

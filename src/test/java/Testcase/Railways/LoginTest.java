@@ -1,35 +1,23 @@
 package Testcase.Railways;
 import Common.Common.Utilities;
 import Common.Constant.Constant;
-import PageObjects.Railways.HomePage;
-import PageObjects.Railways.LoginPage;
+import PageObjects.Railways.*;
 import com.google.common.base.Verify;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class LoginTest {
-    private HomePage homepage = new HomePage();
-    private LoginPage loginPage;
+public class LoginTest extends Testbase {
 
-    @BeforeClass
-    public void BeforeClass(){
-        System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath());
-        Constant.WEBDRIVER = new ChromeDriver();
-        Constant.WEBDRIVER.manage().window().maximize();
-    }
 
-    @AfterClass
-    public void AfterClass(){
-        Constant.WEBDRIVER.quit();
-    }
 
     @BeforeMethod
     public void beforeMethod() {
         System.out.println("Pre-condition");
         homepage.open();
         loginPage = homepage.gotoLoginPage();
+
     }
 
     @AfterMethod
@@ -76,6 +64,34 @@ public class LoginTest {
         String actualMessage = loginPage.getUnableMsgExist(6);
         Assert.assertEquals(actualMessage,expectedMessage,"Error message is not displayed as expected");
     }
+
+    @Test(description = "TC06 - Additional pages display once user logged in")
+    public void TC06(){
+        loginPage.login(Constant.USERNAME,Constant.PASSWORD);
+        Boolean checkTabExist = homepage.checkTabsDisplayed();
+        Verify.verify(checkTabExist,"1 of 3 tab was not exist");
+        MyTicketPage myTicketPage = homepage.gotoMyTicketPage();
+        Boolean checkManageTicketPage = myTicketPage.checkManageTicket();
+        Verify.verify(checkManageTicketPage,"User still not directed to My ticket page");
+        ChangePasswordPage changePasswordPage = myTicketPage.gotoChangePasswordPage();
+        Boolean checkChangePasswordPage = changePasswordPage.checkChangePasswordPage();
+        Verify.verify(checkManageTicketPage,"User still not directed to Change password page");
+    }
+
+    @Test(description = "TC08 - User can't login with an account hasn't been activated")
+    public void TC08(){
+        registerPage = loginPage.gotoRegisterPage();
+        Utilities.pageDownEnd();
+        registerPage.register(Constant.USERNAME_REGISTER,Constant.PASSWORD_REGISTER,Constant.PASSWORD_REGISTER,Constant.PID_PASSPORT_REGISTER);
+        loginPage = registerPage.gotoLoginPage();
+        loginPage.login(Constant.USERNAME_REGISTER,Constant.PASSWORD_REGISTER);
+        Assert.assertTrue(loginPage.isLoginPageLanding(),"User still can log in without activated account");
+        String expectMsg = Constant.CHECK_MSG_INVALID;
+        String actualMsg = loginPage.getLoginErrorMsg();
+        Assert.assertEquals(actualMsg,expectMsg,"Error message is not displayed correctly");
+
+    }
+
 
 
 }

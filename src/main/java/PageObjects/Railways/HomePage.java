@@ -1,12 +1,18 @@
 package PageObjects.Railways;
 
 import Common.Constant.Constant;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class HomePage extends GeneralPage {
 
     // Locators
 
+
+
     // Elements
+
+
 
     // Methods
 
@@ -14,4 +20,6 @@ public class HomePage extends GeneralPage {
         Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
         return this;
     }
+
+
 }

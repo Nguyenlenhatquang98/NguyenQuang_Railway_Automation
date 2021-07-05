@@ -14,6 +14,10 @@ public class GeneralPage {
     private final By _tabContact = By.xpath("//div[@id='menu']//a[@href='/Page/Contact.cshtml']");
     private final By _lblWelcomeMessage = By.xpath("//div[@class='account']/strong[normalize-space(text())]");
 
+    private final By _tabMyTicket = By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']");
+    private final By _tabChangePassword = By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']");
+    private final By _tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
+
     // Elements
 
     protected WebElement getTabLogin(){
@@ -32,22 +36,48 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(_lblWelcomeMessage);
     }
 
+    protected WebElement getTabMyTicket(){
+        return Constant.WEBDRIVER.findElement(_tabMyTicket);
+    }
 
-    public String getWelcomeMessage(){
-        return this.getlblWelcomeMessage().getText();
+    protected  WebElement getTabChangePassword(){
+        return Constant.WEBDRIVER.findElement(_tabChangePassword);
+    }
+
+    protected WebElement getTabRegister(){
+        return Constant.WEBDRIVER.findElement(_tabRegister);
     }
 
 
     // Methods
+
+    public String getWelcomeMessage(){
+        return this.getlblWelcomeMessage().getText();
+    }
 
     public LoginPage gotoLoginPage(){
         this.getTabLogin().click();
         return new LoginPage();
     }
 
+    public MyTicketPage gotoMyTicketPage(){
+        this.getTabMyTicket().click();
+        return new MyTicketPage();
+    }
+
     public ContactPage gotoContactPage(){
         this.getTabContact().click();
         return new ContactPage();
+    }
+
+    public RegisterPage gotoRegisterPage(){
+        this.getTabRegister().click();
+        return new RegisterPage();
+    }
+
+    public ChangePasswordPage gotoChangePasswordPage(){
+        this.getTabChangePassword().click();
+        return new ChangePasswordPage();
     }
 
     public HomePage logout(){
@@ -74,6 +104,22 @@ public class GeneralPage {
             return false;
         }
     }
+
+    public boolean checkTabsDisplayed (){
+        Boolean check1,check2,check3;
+        check1 = isElementExist(_tabMyTicket);
+        check2 = isElementExist(_tabChangePassword);
+        check3 = isElementExist(_tabLogout);
+        if(check1 == true && check2 == true && check3 ==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+
 
 
 
