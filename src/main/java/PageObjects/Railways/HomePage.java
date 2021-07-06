@@ -17,7 +17,7 @@ public class HomePage extends GeneralPage {
     // Methods
 
     public HomePage open(){
-        Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
+        Constant.WEBDRIVER.navigate();
         return this;
     }
 

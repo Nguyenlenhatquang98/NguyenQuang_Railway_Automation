@@ -15,7 +15,6 @@ public class LoginTest extends Testbase {
     @BeforeMethod
     public void beforeMethod() {
         System.out.println("Pre-condition");
-        homepage.open();
         loginPage = homepage.gotoLoginPage();
 
     }
@@ -23,6 +22,7 @@ public class LoginTest extends Testbase {
     @AfterMethod
     public void afterMethod() {
         System.out.println("Post-condition");
+        generalPage.logout();
     }
 
     @Test(description = "TC01 - User can log into Railway with valid username and password")
@@ -37,7 +37,7 @@ public class LoginTest extends Testbase {
         boolean checklblWelcomeExist = homepage.checkWelcomeExist();
 
         Verify.verify(checklblWelcomeExist,"Welcome message is not displayed as expected");
-        homepage.logout();
+       // homepage.logout();
     }
 
     @Test(description = "TC02 - User can log into Railway with blank username and password")
@@ -76,6 +76,7 @@ public class LoginTest extends Testbase {
         ChangePasswordPage changePasswordPage = myTicketPage.gotoChangePasswordPage();
         Boolean checkChangePasswordPage = changePasswordPage.checkChangePasswordPage();
         Verify.verify(checkManageTicketPage,"User still not directed to Change password page");
+        //changePasswordPage.logout();
     }
 
     @Test(description = "TC08 - User can't login with an account hasn't been activated")
@@ -89,7 +90,6 @@ public class LoginTest extends Testbase {
         String expectMsg = Constant.CHECK_MSG_INVALID;
         String actualMsg = loginPage.getLoginErrorMsg();
         Assert.assertEquals(actualMsg,expectMsg,"Error message is not displayed correctly");
-
     }
 
 

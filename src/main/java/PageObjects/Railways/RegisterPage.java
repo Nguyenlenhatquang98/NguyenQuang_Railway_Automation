@@ -14,6 +14,9 @@ public class RegisterPage extends GeneralPage{
     private final By _txtPIDPassport = By.xpath("//div[@id='content']//li[@class='pid-number']/input");
     private final By _btnRegister = By.xpath("//p[@class='form-actions']/input");
     private final By _lblConfirmRegister =  By.xpath("//div[@id='content']/p");
+    private final By _lblErrorMsg = By.xpath("//div[@id='content']/p[@class='message error']");
+    private final By _lblPasswordErrorMsg = By.xpath("//div[@id='content']//li[@class='password']/label[@class='validation-error']");
+    private final By _lblPidErrorMsg = By.xpath("//div[@id='content']//li[@class='pid-number']/label[@class='validation-error']");
 
     //Elements
 
@@ -54,6 +57,18 @@ public class RegisterPage extends GeneralPage{
 
     public String getConfirmRegister(){
         return getLblConfirmRegister().getText();
+    }
+
+    public String getErrorMsg(){
+        return Constant.WEBDRIVER.findElement(_lblErrorMsg).getText();
+    }
+
+    public String getPasswordErrorMsg(){
+        return Constant.WEBDRIVER.findElement(_lblPasswordErrorMsg).getText();
+    }
+
+    public String getPidErrorMsg(){
+        return Constant.WEBDRIVER.findElement(_lblPidErrorMsg).getText();
     }
 
 }

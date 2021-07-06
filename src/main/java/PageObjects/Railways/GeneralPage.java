@@ -80,13 +80,6 @@ public class GeneralPage {
         return new ChangePasswordPage();
     }
 
-    public HomePage logout(){
-        this.getTabLogout().click();
-        return new HomePage();
-    }
-
-
-
     public boolean isElementExist(By locator){
         try{
             Constant.WEBDRIVER.findElement(locator);
@@ -94,6 +87,15 @@ public class GeneralPage {
         }catch (org.openqa.selenium.NoSuchElementException e){
             return false;
         }
+    }
+
+
+
+    public HomePage logout(){
+        if(this.getTabLogout()!= null){
+            this.getTabLogout().click();
+        }
+        return new HomePage();
     }
 
     public boolean checkWelcomeExist(){
@@ -117,10 +119,5 @@ public class GeneralPage {
             return false;
         }
     }
-
-
-
-
-
 
 }
