@@ -40,6 +40,9 @@ public class ResetPasswordTest extends Testbase {
         Assert.assertEquals(forgotPasswordPage.getErrorMessage(),Constant.CHECK_MSG_RESET_EXIST,"Error message not display correctly");
     }
 
-  
+    public void TC13(){
+        
+    }
+
 
 }
