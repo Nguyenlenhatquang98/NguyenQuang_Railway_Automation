@@ -4,9 +4,9 @@ import Common.Common.Utilities;
 import Common.Constant.Constant;
 import Common.WebDriverManager.WebDriverManager;
 import PageObjects.Railways.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
 
 public class Testbase {
 
@@ -19,17 +19,20 @@ public class Testbase {
     public TicketPricePage ticketPricePage;
     public MyTicketPage myTicketPage;
 
+
     @BeforeClass
-    public void BeforeClass(){
+    public void BeforeClass() {
         System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath());
-        Constant.WEBDRIVER= WebDriverManager.getInstance();
+        Constant.WEBDRIVER = WebDriverManager.getInstance();
         Constant.WEBDRIVER.maximize();
         homepage.open();
     }
 
+
     @AfterClass
-    public void AfterClass(){
+    public void AfterClass() {
         Constant.WEBDRIVER.quit();
+
     }
 
 

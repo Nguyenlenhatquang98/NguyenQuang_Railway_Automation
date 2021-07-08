@@ -36,6 +36,10 @@ public class WebDriverManager {
         }
     }
 
+    public Alert switchToAlert(){
+        return driver.switchTo().alert();
+    }
+
     public void quit() {
         driver.quit();
         instance = null;

@@ -35,4 +35,6 @@ public class Constant {
     public static final int MAX_AMOUNT_OF_TICKET = 10;
     public static final int A_TICKET = 1;
     public static final int NUMBER_OF_DATE = 5;
+    public static final String CHECK_MSG_NOTE = "You currently book 0 ticket, you can book 10 more.";
+
 }

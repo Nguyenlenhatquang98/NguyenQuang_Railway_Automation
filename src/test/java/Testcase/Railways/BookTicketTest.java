@@ -3,7 +3,6 @@ package Testcase.Railways;
 import Common.Common.Utilities;
 import Common.Constant.Constant;
 import PageObjects.Railways.MyTicketPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -62,7 +61,8 @@ public class BookTicketTest extends Testbase{
         bookTicketPage = homepage.gotoBookTicketPage();
         bookTicketPage.BookTicket(bookTicketPage.setDepartDate(), Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.A_TICKET);
         myTicketPage = bookTicketPage.gotoMyTicketPage();
-
+        myTicketPage.cancelTicket(1);
+        Assert.assertEquals(myTicketPage.getErrorMsg(),Constant.CHECK_MSG_NOTE,"A ticket was still not canceled");
     }
 
 

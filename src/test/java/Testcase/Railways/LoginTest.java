@@ -4,11 +4,6 @@ import Common.Common.Utilities;
 import Common.Constant.Constant;
 import PageObjects.Railways.ChangePasswordPage;
 import PageObjects.Railways.MyTicketPage;
-import com.aventstack.extentreports.ExtentReporter;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.google.common.base.Verify;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -40,18 +35,10 @@ public class LoginTest extends Testbase {
 
     @Test(description = "TC01 - User can log into Railway with valid username and password")
     public void TC01() {
-
-        ExtentHtmlReporter reporter = new ExtentHtmlReporter("./Report/Report_HTML.html");
-        ExtentReports extent =  new ExtentReports();
-        extent.attachReporter(reporter);
-        ExtentTest logger= extent.createTest("TC01");
-        logger.log(Status.INFO,"User can log into Railway with valid username and password");
-        logger.log(Status.PASS,"Passed");
-        extent.flush();
-
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         String WelcomeUser = homepage.getWelcomeUser();
         Assert.assertEquals(WelcomeUser, Constant.CHECK_MSG_WELCOME, "Welcome message is not displayed as expected");
+
     }
 
     @Test(description = "TC02 - User can log into Railway with blank username and password")
@@ -70,6 +57,7 @@ public class LoginTest extends Testbase {
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
         String expectedMsg = Constant.CHECK_MSG_INVALID;
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected");
+
     }
 
     @Test(description = "TC05 - System shows message when user enters wrong password several times")
@@ -77,6 +65,8 @@ public class LoginTest extends Testbase {
         String expectedMessage = Constant.CHECK_MSG_UNABLE_LOGIN;
         String actualMessage = loginPage.getUnableMsgExist(6);
         Assert.assertEquals(actualMessage, expectedMessage, "Error message is not displayed as expected");
+
+
     }
 
     @Test(description = "TC06 - Additional pages display once user logged in")
