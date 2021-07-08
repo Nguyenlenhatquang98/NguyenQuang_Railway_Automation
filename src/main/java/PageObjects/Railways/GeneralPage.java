@@ -13,10 +13,11 @@ public class GeneralPage {
     private final By _tabLogout = By.xpath("//div[@id='menu']//a[@href='/Account/Logout']");
     private final By _tabContact = By.xpath("//div[@id='menu']//a[@href='/Page/Contact.cshtml']");
     private final By _lblWelcomeMessage = By.xpath("//div[@class='account']/strong[normalize-space(text())]");
-
+    private final By _tabBookTicket = By.xpath("//div[@id='menu']//a[@href='/Page/BookTicketPage.cshtml']");
     private final By _tabMyTicket = By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']");
     private final By _tabChangePassword = By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']");
     private final By _tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
+    private final By _tabTicketPrice = By.xpath("//div[@id='menu']//li[5]//a[@href='/Page/TrainPriceListPage.cshtml']");
 
     // Elements
 
@@ -36,6 +37,10 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(_lblWelcomeMessage);
     }
 
+    protected WebElement getTabBookTicket(){
+        return Constant.WEBDRIVER.findElement(_tabBookTicket);
+    }
+
     protected WebElement getTabMyTicket(){
         return Constant.WEBDRIVER.findElement(_tabMyTicket);
     }
@@ -46,6 +51,10 @@ public class GeneralPage {
 
     protected WebElement getTabRegister(){
         return Constant.WEBDRIVER.findElement(_tabRegister);
+    }
+
+    protected  WebElement getTabTicketPrice(){
+        return Constant.WEBDRIVER.findElement(_tabTicketPrice);
     }
 
 
@@ -70,6 +79,16 @@ public class GeneralPage {
         return new ContactPage();
     }
 
+    public BookTicketPage gotoBookTicketPage(){
+        this.getTabBookTicket().click();
+        return new BookTicketPage();
+    }
+
+    public TicketPricePage gotoTicketPricePage(){
+        this.getTabTicketPrice().click();
+        return new TicketPricePage();
+    }
+
     public RegisterPage gotoRegisterPage(){
         this.getTabRegister().click();
         return new RegisterPage();
@@ -89,7 +108,37 @@ public class GeneralPage {
         }
     }
 
+    public int changeCityToIndex(String cityName){
+        if(cityName.equals("Sài Gòn"))
+            return 1;
+        else if(cityName.equals("Phan Thiết"))
+            return 2;
+        else if(cityName.equals("Nha Trang"))
+            return 3;
+        else if(cityName.equals("Đà Nẵng"))
+            return 4;
+        else if(cityName.equals("Huế"))
+            return 5;
+        else{
+            return 6;
+        }
+    }
 
+    public int changeSeatTypeToIndex(String seatType){
+        if(seatType.equals("Hard seat"))
+            return 1;
+        else if(seatType.equals("Soft seat"))
+            return 2;
+        else if(seatType.equals("Soft seat with air conditioner"))
+            return 3;
+        else if(seatType.equals("Hard bed"))
+            return 4;
+        else if(seatType.equals("Soft bed"))
+            return 5;
+        else{
+            return 6;
+        }
+    }
 
     public HomePage logout(){
         if(this.getTabLogout()!= null){

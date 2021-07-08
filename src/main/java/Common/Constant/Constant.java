@@ -19,13 +19,18 @@ public class Constant {
     public static final String INVALID_PASSWORD = "nguyenlenhatquang0";
     public static final String EMAIL = "mailto:thanh.viet.le@logigear.com";
     public static final String CHECK_MSG_UNABLE_LOGIN = "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes.";
-    public static final String USERNAME_REGISTER = Utilities.getRandomString(10)+"@gmail.com";
-    public static final String PASSWORD_REGISTER = Utilities.getRandomString(9);
-    public static final String PID_PASSPORT_REGISTER =Utilities.getRandomString(8);
     public static final String PASSWORD_RESET_TITLE = "Password Reset Instructions Form";
     public static final String RESET_EMAIL_INVALID = "nguyenlenhatquang4656@gmail.com";
     public static final String CHECK_MSG_RESET_EXIST = "This email address doesn't exist.";
-    public static final String CHECK_MSG_REGISTER_ERROR = "There're errors in the form. Please correct the errors and try again.";
+    public static final String CHECK_MSG_FORM_ERROR = "There're errors in the form. Please correct the errors and try again.";
+    public static final String CHECK_MSG_TICKET_AMOUNT_ERROR = "You have booked 10 tickets. You can book no more.";
     public static final String CHECK_MSG_PASSWORD_ERROR = "Invalid password length";
     public static final String CHECK_MSG_ID_ERROR = "Invalid ID length";
+    public static final String DEPART_DATE = "7/15/2021";
+    public static final String DEPART_FROM = "Huế";
+    public static final String ARRIVE_AT = "Đà Nẵng";
+    public static final String SEAT_TYPE = "Soft bed";
+    public static final int MAX_AMOUNT_OF_TICKET = 10;
+    public static final int A_TICKET = 1;
+
 }

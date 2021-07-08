@@ -1,19 +1,27 @@
 package Testcase.Railways;
+
 import Common.Common.Utilities;
 import Common.Constant.Constant;
-import PageObjects.Railways.*;
+import PageObjects.Railways.ChangePasswordPage;
+import PageObjects.Railways.MyTicketPage;
 import com.google.common.base.Verify;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 
 public class LoginTest extends Testbase {
 
-
+    public String USERNAME_REGISTER;
+    public String PASSWORD_REGISTER;
+    public String PID_PASSPORT_REGISTER;
 
     @BeforeMethod
     public void beforeMethod() {
+        USERNAME_REGISTER = Utilities.getRandomAlphabetString(10)+"@gmail.com";
+        PASSWORD_REGISTER = Utilities.getRandomNumberString(9);
+        PID_PASSPORT_REGISTER =Utilities.getRandomNumberString(9);
         System.out.println("Pre-condition");
         loginPage = homepage.gotoLoginPage();
 
@@ -83,9 +91,9 @@ public class LoginTest extends Testbase {
     public void TC08(){
         registerPage = loginPage.gotoRegisterPage();
         Utilities.pageDownEnd();
-        registerPage.register(Constant.USERNAME_REGISTER,Constant.PASSWORD_REGISTER,Constant.PASSWORD_REGISTER,Constant.PID_PASSPORT_REGISTER);
+        registerPage.register(USERNAME_REGISTER,PASSWORD_REGISTER,PASSWORD_REGISTER,PID_PASSPORT_REGISTER);
         loginPage = registerPage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME_REGISTER,Constant.PASSWORD_REGISTER);
+        loginPage.login(USERNAME_REGISTER,PASSWORD_REGISTER);
         Assert.assertTrue(loginPage.isLoginPageLanding(),"User still can log in without activated account");
         String expectMsg = Constant.CHECK_MSG_INVALID;
         String actualMsg = loginPage.getLoginErrorMsg();

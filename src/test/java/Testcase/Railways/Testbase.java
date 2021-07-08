@@ -14,6 +14,8 @@ public class Testbase {
     public LoginPage loginPage;
     public RegisterPage registerPage;
     public ForgotPasswordPage forgotPasswordPage;
+    public BookTicketPage bookTicketPage;
+    public TicketPricePage ticketPricePage;
 
     @BeforeClass
     public void BeforeClass(){
