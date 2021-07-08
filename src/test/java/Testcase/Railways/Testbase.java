@@ -2,6 +2,7 @@ package Testcase.Railways;
 
 import Common.Common.Utilities;
 import Common.Constant.Constant;
+import Common.WebDriverManager.WebDriverManager;
 import PageObjects.Railways.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -16,10 +17,12 @@ public class Testbase {
     public ForgotPasswordPage forgotPasswordPage;
     public BookTicketPage bookTicketPage;
     public TicketPricePage ticketPricePage;
+    public MyTicketPage myTicketPage;
 
     @BeforeClass
     public void BeforeClass(){
         System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath());
+        Constant.WEBDRIVER= WebDriverManager.getInstance();
         Constant.WEBDRIVER.maximize();
         homepage.open();
     }

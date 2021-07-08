@@ -6,6 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class BookTicketPage extends GeneralPage{
 
     // Locators
@@ -64,6 +68,16 @@ public class BookTicketPage extends GeneralPage{
         seatTypeSelect.selectByValue(Integer.toString(changeSeatTypeToIndex(seatType)));
         ticketAmountSelect.selectByVisibleText(Integer.toString(amount));
         getBookTicket().click();
+    }
+
+    public String setDepartDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
+        Date dt = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.DATE, Constant.NUMBER_OF_DATE);
+        dt = c.getTime();
+        return dateFormat.format(dt);
     }
 
     public String getDepartStationCheck(){

@@ -38,6 +38,7 @@ public class WebDriverManager {
 
     public void quit() {
         driver.quit();
+        instance = null;
     }
 
     public String getTitle() {

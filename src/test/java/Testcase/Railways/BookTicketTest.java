@@ -2,6 +2,7 @@ package Testcase.Railways;
 
 import Common.Common.Utilities;
 import Common.Constant.Constant;
+import PageObjects.Railways.MyTicketPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -38,9 +39,9 @@ public class BookTicketTest extends Testbase{
     @Test(description = "User can't book more than 10 tickets")
     public void TC14(){
         bookTicketPage = homepage.gotoBookTicketPage();
-        bookTicketPage.BookTicket(Constant.DEPART_DATE,Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.MAX_AMOUNT_OF_TICKET);
+        bookTicketPage.BookTicket(bookTicketPage.setDepartDate(), Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.MAX_AMOUNT_OF_TICKET);
         bookTicketPage.gotoBookTicketPage();
-        bookTicketPage.BookTicket(Constant.DEPART_DATE,Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.A_TICKET);
+        bookTicketPage.BookTicket(bookTicketPage.setDepartDate(),Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.A_TICKET);
         Assert.assertEquals(bookTicketPage.getErrorForm(),Constant.CHECK_MSG_FORM_ERROR,"Error message not displayed correctly");
         Assert.assertEquals(bookTicketPage.getErrorAmountTicket(),Constant.CHECK_MSG_TICKET_AMOUNT_ERROR,"Error message not displayed correctly");
 
@@ -49,11 +50,20 @@ public class BookTicketTest extends Testbase{
     @Test(description = "User can open 'Book ticket' page by click on 'Book ticket' link in 'Ticket price'")
     public void TC15(){
         ticketPricePage = homepage.gotoTicketPricePage();
-        Utilities.pageDownEnd();
         bookTicketPage =  ticketPricePage.SelectOption(Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE);
         Assert.assertEquals(bookTicketPage.getDepartStationCheck(),Constant.DEPART_FROM,"Depart Station was incorrect");
         Assert.assertEquals(bookTicketPage.getArriveStationCheck(),Constant.ARRIVE_AT,"Arrive Station was incorrect");
         Assert.assertEquals(bookTicketPage.getSeatTypeCheck(),Constant.SEAT_TYPE,"Seat type was incorrect");
 
     }
+
+    @Test(description = "User can cancel a ticket")
+    public void TC16(){
+        bookTicketPage = homepage.gotoBookTicketPage();
+        bookTicketPage.BookTicket(bookTicketPage.setDepartDate(), Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.A_TICKET);
+        myTicketPage = bookTicketPage.gotoMyTicketPage();
+
+    }
+
+
 }

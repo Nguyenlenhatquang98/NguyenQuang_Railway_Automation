@@ -8,11 +8,14 @@ import org.openqa.selenium.WebDriver;
 
 public class Constant {
 
-    public static WebDriverManager WEBDRIVER = WebDriverManager.getInstance();
+    public static WebDriverManager WEBDRIVER ;
     public static final String EMPTY_DATA = "";
     public static final String RAILWAY_URL = "http://www.railway2.somee.com/Page/HomePage.cshtml";
     public static final String USERNAME = "nguyenlenhatquang1@gmail.com";
     public static final String PASSWORD = "nguyenlenhatquang1";
+    public static final String CHECK_MSG_WELCOME = "Welcome " + USERNAME;
+    public static final String CHECK_LBL_MANAGE_TICKETS = "Manage Tickets";
+    public static final String CHECK_LBL_CHANGE_PASSWORD = "Change password";
     public static final String CHECK_MSG_BLANK = "There was a problem with your login and/or errors exist in your form.";
     public static final String CHECK_MSG_INVALID = "Invalid username or password. Please try again.";
     public static final String CHECK_MSG_REGISTER = "Thank you for registering your account";
@@ -26,11 +29,10 @@ public class Constant {
     public static final String CHECK_MSG_TICKET_AMOUNT_ERROR = "You have booked 10 tickets. You can book no more.";
     public static final String CHECK_MSG_PASSWORD_ERROR = "Invalid password length";
     public static final String CHECK_MSG_ID_ERROR = "Invalid ID length";
-    public static final String DEPART_DATE = "7/15/2021";
-    public static final String DEPART_FROM = "Huế";
-    public static final String ARRIVE_AT = "Đà Nẵng";
-    public static final String SEAT_TYPE = "Soft bed";
+    public static final String DEPART_FROM = "Sài Gòn";
+    public static final String ARRIVE_AT = "Huế";
+    public static final String SEAT_TYPE = "Soft seat";
     public static final int MAX_AMOUNT_OF_TICKET = 10;
     public static final int A_TICKET = 1;
-
+    public static final int NUMBER_OF_DATE = 5;
 }

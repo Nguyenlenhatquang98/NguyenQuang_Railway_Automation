@@ -169,4 +169,8 @@ public class GeneralPage {
         }
     }
 
+    public String getWelcomeUser(){
+        return getlblWelcomeMessage().getText();
+    }
+
 }

@@ -18,7 +18,17 @@ public class MyTicketPage extends GeneralPage {
 
     //Methods
 
-    public Boolean checkManageTicket(){
+    public boolean checkManageTicket(){
         return isElementExist(_lblManageTicket);
     }
+
+    public String getManageTicket(){
+        return getLblMangeTicket().getText();
+    }
+
+    public void cancelTicket(int row){
+        String OperationXpath = "//table[@class='MyTable']//tr["+row+"]/td[11]/input";
+        By _btnOperation =  By.xpath(OperationXpath);
+    }
+
 }
