@@ -36,7 +36,7 @@ public class WebDriverManager {
         }
     }
 
-    public Alert switchToAlert(){
+    public Alert switchToAlert() {
         return driver.switchTo().alert();
     }
 
@@ -49,8 +49,4 @@ public class WebDriverManager {
         return driver.getTitle();
     }
 
-    /*public void scrollIntoView(WebElement element) {
-        JavascriptExecutor js = driver;
-        js.executeScript("argument[0].scrollIntoView()", element);
-    }*/
 }

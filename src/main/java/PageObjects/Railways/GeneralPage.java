@@ -1,9 +1,8 @@
 package PageObjects.Railways;
 
+import Common.Constant.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import Common.Constant.Constant;
 
 public class GeneralPage {
 
@@ -17,159 +16,157 @@ public class GeneralPage {
     private final By _tabMyTicket = By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']");
     private final By _tabChangePassword = By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']");
     private final By _tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
-    private final By _tabTicketPrice = By.xpath("//div[@id='menu']//li[5]//a[@href='/Page/TrainPriceListPage.cshtml']");
+    private final By _tabTicketPrice = By.xpath("//div[@id='menu']//a[@href='/Page/TrainPriceListPage.cshtml']");
 
     // Elements
 
-    protected WebElement getTabLogin(){
+    protected WebElement getTabLogin() {
         return Constant.WEBDRIVER.findElement(_tabLogin);
     }
 
-    protected WebElement getTabLogout(){
+    protected WebElement getTabLogout() {
         return Constant.WEBDRIVER.findElement(_tabLogout);
     }
 
-    protected WebElement getTabContact(){
+    protected WebElement getTabContact() {
         return Constant.WEBDRIVER.findElement(_tabContact);
     }
 
-    protected WebElement getlblWelcomeMessage(){
+    protected WebElement getlblWelcomeMessage() {
         return Constant.WEBDRIVER.findElement(_lblWelcomeMessage);
     }
 
-    protected WebElement getTabBookTicket(){
+    protected WebElement getTabBookTicket() {
         return Constant.WEBDRIVER.findElement(_tabBookTicket);
     }
 
-    protected WebElement getTabMyTicket(){
+    protected WebElement getTabMyTicket() {
         return Constant.WEBDRIVER.findElement(_tabMyTicket);
     }
 
-    protected  WebElement getTabChangePassword(){
+    protected WebElement getTabChangePassword() {
         return Constant.WEBDRIVER.findElement(_tabChangePassword);
     }
 
-    protected WebElement getTabRegister(){
+    protected WebElement getTabRegister() {
         return Constant.WEBDRIVER.findElement(_tabRegister);
     }
 
-    protected  WebElement getTabTicketPrice(){
+    protected WebElement getTabTicketPrice() {
         return Constant.WEBDRIVER.findElement(_tabTicketPrice);
     }
 
 
     // Methods
 
-    public String getWelcomeMessage(){
+    public String getWelcomeMessage() {
         return this.getlblWelcomeMessage().getText();
     }
 
-    public LoginPage gotoLoginPage(){
+    public LoginPage gotoLoginPage() {
         this.getTabLogin().click();
         return new LoginPage();
     }
 
-    public MyTicketPage gotoMyTicketPage(){
+    public MyTicketPage gotoMyTicketPage() {
         this.getTabMyTicket().click();
         return new MyTicketPage();
     }
 
-    public ContactPage gotoContactPage(){
+    public ContactPage gotoContactPage() {
         this.getTabContact().click();
         return new ContactPage();
     }
 
-    public BookTicketPage gotoBookTicketPage(){
+    public BookTicketPage gotoBookTicketPage() {
         this.getTabBookTicket().click();
         return new BookTicketPage();
     }
 
-    public TicketPricePage gotoTicketPricePage(){
+    public TicketPricePage gotoTicketPricePage() {
         this.getTabTicketPrice().click();
         return new TicketPricePage();
     }
 
-    public RegisterPage gotoRegisterPage(){
+    public RegisterPage gotoRegisterPage() {
         this.getTabRegister().click();
         return new RegisterPage();
     }
 
-    public ChangePasswordPage gotoChangePasswordPage(){
+    public ChangePasswordPage gotoChangePasswordPage() {
         this.getTabChangePassword().click();
         return new ChangePasswordPage();
     }
 
-    public boolean isElementExist(By locator){
-        try{
+    public boolean isElementExist(By locator) {
+        try {
             Constant.WEBDRIVER.findElement(locator);
             return true;
-        }catch (org.openqa.selenium.NoSuchElementException e){
+        } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
     }
 
-    public int changeCityToIndex(String cityName){
-        if(cityName.equals("Sài Gòn"))
+    public int changeCityToIndex(String cityName) {
+        if (cityName.equals("Sài Gòn"))
             return 1;
-        else if(cityName.equals("Phan Thiết"))
+        else if (cityName.equals("Phan Thiết"))
             return 2;
-        else if(cityName.equals("Nha Trang"))
+        else if (cityName.equals("Nha Trang"))
             return 3;
-        else if(cityName.equals("Đà Nẵng"))
+        else if (cityName.equals("Đà Nẵng"))
             return 4;
-        else if(cityName.equals("Huế"))
+        else if (cityName.equals("Huế"))
             return 5;
-        else{
+        else {
             return 6;
         }
     }
 
-    public int changeSeatTypeToIndex(String seatType){
-        if(seatType.equals("Hard seat"))
+    public int changeSeatTypeToIndex(String seatType) {
+        if (seatType.equals("Hard seat"))
             return 1;
-        else if(seatType.equals("Soft seat"))
+        else if (seatType.equals("Soft seat"))
             return 2;
-        else if(seatType.equals("Soft seat with air conditioner"))
+        else if (seatType.equals("Soft seat with air conditioner"))
             return 3;
-        else if(seatType.equals("Hard bed"))
+        else if (seatType.equals("Hard bed"))
             return 4;
-        else if(seatType.equals("Soft bed"))
+        else if (seatType.equals("Soft bed"))
             return 5;
-        else{
+        else {
             return 6;
         }
     }
 
-    public HomePage logout(){
-        if(this.getTabLogout()!= null){
+    public HomePage logout() {
+        if (this.getTabLogout() != null) {
             this.getTabLogout().click();
         }
         return new HomePage();
     }
 
-    public boolean checkWelcomeExist(){
-        if(isElementExist(this._lblWelcomeMessage)){
+    public boolean checkWelcomeExist() {
+        if (isElementExist(this._lblWelcomeMessage)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public boolean checkTabsDisplayed (){
-        Boolean check1,check2,check3;
+    public boolean checkTabsDisplayed() {
+        Boolean check1, check2, check3;
         check1 = isElementExist(_tabMyTicket);
         check2 = isElementExist(_tabChangePassword);
         check3 = isElementExist(_tabLogout);
-        if(check1 == true && check2 == true && check3 ==true){
+        if (check1 == true && check2 == true && check3 == true) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public String getWelcomeUser(){
+    public String getWelcomeUser() {
         return getlblWelcomeMessage().getText();
     }
 

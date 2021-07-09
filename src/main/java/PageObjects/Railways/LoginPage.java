@@ -8,12 +8,12 @@ public class LoginPage extends GeneralPage {
 
     // Locators
 
-    private final By _txtUsername = By.xpath("//li[@class='username']/input");
-    private final By _txtPassword = By.xpath("//li[@class='password']/input");
-    private final By _btnLogin = By.xpath("//p[@class='form-actions']/input");
-    private final By _lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
+    private final By _txtUsername = By.xpath("//div[@id='content']//input[@id='username']");
+    private final By _txtPassword = By.xpath("//div[@id='content']//input[@id='password']");
+    private final By _btnLogin = By.xpath("//div[@id='content']//input[@value='Login']");
+    private final By _lblLoginErrorMsg = By.xpath("//div[@id='content']//p[@class='message error LoginForm']");
     private final By _lblLoginPage = By.xpath("//div[@id='content']/h1[contains(text(),'Login')]");
-    private final By _linkForgotPassword = By.xpath("//div[@id='content']//li[3]/a");
+    private final By _linkForgotPassword = By.xpath("//div[@id='content']//a[@href='/Account/ForgotPassword.cshtml']");
 
 
     // Elements

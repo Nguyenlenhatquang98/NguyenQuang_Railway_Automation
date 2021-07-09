@@ -4,21 +4,21 @@ import Common.Constant.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class ContactPage extends GeneralPage{
+public class ContactPage extends GeneralPage {
 
     // Locators
 
-    private final By _email = By.xpath("//div[@id='content']//a");
+    private final By _email = By.xpath("//div[@id='content']//a[@href='mailto:thanh.viet.le@logigear.com']");
 
     // Elements
 
-    protected WebElement getEmail(){
+    protected WebElement getEmail() {
         return Constant.WEBDRIVER.findElement(_email);
     }
 
     // Methods
 
-    public String getEmailHref(){
+    public String getEmailHref() {
         return getEmail().getAttribute("href");
     }
 }

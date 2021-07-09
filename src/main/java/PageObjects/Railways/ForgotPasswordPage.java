@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 public class ForgotPasswordPage extends GeneralPage {
     //Locators
 
-    private final By _txtEmailAddress = By.xpath("//div[@id='content']//li[@class='email']/input");
-    private final By _btnSendInstructions = By.xpath("//div[@id='content']//p[@class='form-actions']/input");
-    private final By _lblPasswordReset = By.xpath("//div[@id='content']//legend");
+    private final By _txtEmailAddress = By.xpath("//div[@id='content']//input[@id='email']");
+    private final By _btnSendInstructions = By.xpath("//div[@id='content']//input[@value='Send Instructions']");
+    private final By _lblPasswordReset = By.xpath("//div[@id='content']//legend[contains(text(),'Password Reset')]");
     private final By _msgError = By.xpath("//div[@id='content']//p[@class='message error']");
 
     //Elements

@@ -2,6 +2,7 @@ package Testcase.Railways;
 
 import Common.Common.Utilities;
 import Common.Constant.Constant;
+import Model.Account;
 import PageObjects.Railways.ChangePasswordPage;
 import PageObjects.Railways.MyTicketPage;
 import com.google.common.base.Verify;
@@ -13,15 +14,9 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends Testbase {
 
-    public String USERNAME_REGISTER;
-    public String PASSWORD_REGISTER;
-    public String PID_PASSPORT_REGISTER;
-
     @BeforeMethod
     public void beforeMethod() {
-        USERNAME_REGISTER = Utilities.getRandomAlphabetString(10) + "@gmail.com";
-        PASSWORD_REGISTER = Utilities.getRandomNumberString(9);
-        PID_PASSPORT_REGISTER = Utilities.getRandomNumberString(9);
+        account = new Account();
         System.out.println("Pre-condition");
         loginPage = homepage.gotoLoginPage();
 
@@ -44,7 +39,7 @@ public class LoginTest extends Testbase {
     @Test(description = "TC02 - User can log into Railway with blank username and password")
     public void TC02() {
 
-        loginPage.login("", Constant.PASSWORD);
+        loginPage.login(Constant.EMPTY_DATA, Constant.PASSWORD);
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
         String expectedMsg = Constant.CHECK_MSG_BLANK;
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected");
@@ -63,7 +58,7 @@ public class LoginTest extends Testbase {
     @Test(description = "TC05 - System shows message when user enters wrong password several times")
     public void TC05() {
         String expectedMessage = Constant.CHECK_MSG_UNABLE_LOGIN;
-        String actualMessage = loginPage.getUnableMsgExist(6);
+        String actualMessage = loginPage.getUnableMsgExist(Constant.AMOUNT_OF_LOGIN);
         Assert.assertEquals(actualMessage, expectedMessage, "Error message is not displayed as expected");
 
 
@@ -73,7 +68,7 @@ public class LoginTest extends Testbase {
     public void TC06() {
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         boolean checkTabExist = homepage.checkTabsDisplayed();
-        Verify.verify(checkTabExist, "1 of 3 tab was not exist");
+        Assert.assertTrue(checkTabExist, "1 of 3 tab was not exist");
         MyTicketPage myTicketPage = homepage.gotoMyTicketPage();
         String lblManageTicket = myTicketPage.getManageTicket();
         Assert.assertEquals(lblManageTicket, Constant.CHECK_LBL_MANAGE_TICKETS, "User still not directed to My ticket page");
@@ -86,9 +81,9 @@ public class LoginTest extends Testbase {
     public void TC08() {
         registerPage = loginPage.gotoRegisterPage();
         Utilities.pageDownEnd();
-        registerPage.register(USERNAME_REGISTER, PASSWORD_REGISTER, PASSWORD_REGISTER, PID_PASSPORT_REGISTER);
+        registerPage.register(account);
         loginPage = registerPage.gotoLoginPage();
-        loginPage.login(USERNAME_REGISTER, PASSWORD_REGISTER);
+        loginPage.login(account.getEmail(), account.getPassword());
         Assert.assertTrue(loginPage.isLoginPageLanding(), "User still can log in without activated account");
         String expectMsg = Constant.CHECK_MSG_INVALID;
         String actualMsg = loginPage.getLoginErrorMsg();

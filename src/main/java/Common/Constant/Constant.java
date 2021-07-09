@@ -3,12 +3,11 @@ package Common.Constant;
 
 import Common.Common.Utilities;
 import Common.WebDriverManager.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 
 
 public class Constant {
 
-    public static WebDriverManager WEBDRIVER ;
+    public static WebDriverManager WEBDRIVER;
     public static final String EMPTY_DATA = "";
     public static final String RAILWAY_URL = "http://www.railway2.somee.com/Page/HomePage.cshtml";
     public static final String USERNAME = "nguyenlenhatquang1@gmail.com";
@@ -29,12 +28,13 @@ public class Constant {
     public static final String CHECK_MSG_TICKET_AMOUNT_ERROR = "You have booked 10 tickets. You can book no more.";
     public static final String CHECK_MSG_PASSWORD_ERROR = "Invalid password length";
     public static final String CHECK_MSG_ID_ERROR = "Invalid ID length";
+    public static final String DEPART_DATE = Utilities.setDepartDate();
     public static final String DEPART_FROM = "Sài Gòn";
     public static final String ARRIVE_AT = "Huế";
     public static final String SEAT_TYPE = "Soft seat";
     public static final int MAX_AMOUNT_OF_TICKET = 10;
     public static final int A_TICKET = 1;
     public static final int NUMBER_OF_DATE = 5;
-    public static final String CHECK_MSG_NOTE = "You currently book 0 ticket, you can book 10 more.";
-
+    public static final int ROW_TICKET_CANCEL = 1;
+    public static final int AMOUNT_OF_LOGIN = 6;
 }
