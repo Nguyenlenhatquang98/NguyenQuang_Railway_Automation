@@ -11,42 +11,42 @@ public class BookTicketPage extends GeneralPage {
 
     // Locators
 
-    private final By _comboBoxDepartDate = By.xpath("//form//select[@name='Date']");
-    private final By _comboBoxDepartFrom = By.xpath("//form//select[@name='DepartStation']");
-    private final By _comboBoxArriveAt = By.xpath("//form//select[@name='ArriveStation']");
-    private final By _comboBoxSeatType = By.xpath("//form//select[@name='SeatType']");
-    private final By _comboBoxTicketAmount = By.xpath("//form//select[@name='TicketAmount']");
-    private final By _btnBookTicket = By.xpath("//form//input[@value='Book ticket']");
-    private final By _lblErrorForm = By.xpath("//div[@id='content']//p[@class='message error']");
-    private final By _lblErrorTicketAmount = By.xpath("//form//li[5]//label[@class='validation-error']");
-    private final By _lblDepartFrom = By.xpath("//div[@id='content']//select[@name='DepartStation']/option[@selected='selected']");
-    private final By _lblArriveStation = By.xpath("//div[@id='content']//select[@name='ArriveStation']/option[@selected='selected']");
-    private final By _lblSeatType = By.xpath("//div[@id='content']//select[@name='SeatType']/option[@selected='selected']");
+    private final By _comboBoxDepartDate = By.name("Date");
+    private final By _comboBoxDepartFrom = By.name("DepartStation");
+    private final By _comboBoxArriveAt = By.name("ArriveStation");
+    private final By _comboBoxSeatType = By.name("SeatType");
+    private final By _comboBoxTicketAmount = By.name("TicketAmount");
+    private final By _btnBookTicket = By.xpath("//input[@value='Book ticket']");
+    private final By _lblErrorForm = By.xpath("//p[@class='message error']");
+    private final By _lblErrorTicketAmount = By.xpath("//label[@class='validation-error']");
+    private final By _lblDepartFrom = By.xpath("//select[@name='DepartStation']/option[@selected='selected']");
+    private final By _lblArriveStation = By.xpath("//select[@name='ArriveStation']/option[@selected='selected']");
+    private final By _lblSeatType = By.xpath("//select[@name='SeatType']/option[@selected='selected']");
 
 
     // Elements
 
-    protected WebElement getDepartDate() {
+    protected WebElement getDepartDateElement() {
         return Constant.WEBDRIVER.findElement(_comboBoxDepartDate);
     }
 
-    protected WebElement getDepartFrom() {
+    protected WebElement getDepartFromElement() {
         return Constant.WEBDRIVER.findElement(_comboBoxDepartFrom);
     }
 
-    protected WebElement getArriveAt() {
+    protected WebElement getArriveAtElement() {
         return Constant.WEBDRIVER.findElement(_comboBoxArriveAt);
     }
 
-    protected WebElement getSeatType() {
+    protected WebElement getSeatTypeElement() {
         return Constant.WEBDRIVER.findElement(_comboBoxSeatType);
     }
 
-    protected WebElement getTicketAmount() {
+    protected WebElement getTicketAmountElement() {
         return Constant.WEBDRIVER.findElement(_comboBoxTicketAmount);
     }
 
-    protected WebElement getBookTicket() {
+    protected WebElement getBookTicketElement() {
         return Constant.WEBDRIVER.findElement(_btnBookTicket);
     }
 
@@ -54,17 +54,17 @@ public class BookTicketPage extends GeneralPage {
 
     public void BookTicket(Ticket ticket, int amount) {
         Utilities.pageDownEnd();
-        Select departDateSelect = new Select(getDepartDate());
-        Select departFromSelect = new Select(getDepartFrom());
-        Select arriveAtSelect = new Select(getArriveAt());
-        Select seatTypeSelect = new Select(getSeatType());
-        Select ticketAmountSelect = new Select(getTicketAmount());
+        Select departDateSelect = new Select(getDepartDateElement());
+        Select departFromSelect = new Select(getDepartFromElement());
+        Select arriveAtSelect = new Select(getArriveAtElement());
+        Select seatTypeSelect = new Select(getSeatTypeElement());
+        Select ticketAmountSelect = new Select(getTicketAmountElement());
         departDateSelect.selectByVisibleText(ticket.getDEPARTDATE());
         departFromSelect.selectByValue(Integer.toString(changeCityToIndex(ticket.getDEPARTFROM())));
         arriveAtSelect.selectByValue(Integer.toString(changeCityToIndex(ticket.getARRIVEAT())));
         seatTypeSelect.selectByValue(Integer.toString(changeSeatTypeToIndex(ticket.getSEATTYPE())));
         ticketAmountSelect.selectByVisibleText(Integer.toString(amount));
-        getBookTicket().click();
+        getBookTicketElement().click();
     }
 
 
@@ -81,15 +81,15 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public String getBookDepartStation() {
-        return getDepartFrom().getText();
+        return getDepartFromElement().getText();
     }
 
     public String getBookArriveStation() {
-        return getArriveAt().getText();
+        return getArriveAtElement().getText();
     }
 
     public String getBookSeatType() {
-        return getSeatType().getText();
+        return getSeatTypeElement().getText();
     }
 
 

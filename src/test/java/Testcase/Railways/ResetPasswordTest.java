@@ -8,13 +8,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ResetPasswordTest extends Testbase {
+public class ResetPasswordTest extends TestBase {
 
     @BeforeMethod
     public void beforeMethod() {
         account = new Account();
         System.out.println("Pre-condition");
-        System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath());
+        System.setProperty("webdriver.chrome.driver", Utilities.getDriverPath());
         Constant.WEBDRIVER.maximize();
         homepage.open();
 

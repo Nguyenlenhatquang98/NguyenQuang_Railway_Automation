@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Utilities {
 
-    public static final String getProjectPath() {
+    public static final String getDriverPath() {
         return "src/main/java/Executables/chromedriver.exe";
     }
 

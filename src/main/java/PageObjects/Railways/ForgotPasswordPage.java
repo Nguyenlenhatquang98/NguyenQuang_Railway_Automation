@@ -7,40 +7,40 @@ import org.openqa.selenium.WebElement;
 public class ForgotPasswordPage extends GeneralPage {
     //Locators
 
-    private final By _txtEmailAddress = By.xpath("//div[@id='content']//input[@id='email']");
-    private final By _btnSendInstructions = By.xpath("//div[@id='content']//input[@value='Send Instructions']");
-    private final By _lblPasswordReset = By.xpath("//div[@id='content']//legend[contains(text(),'Password Reset')]");
-    private final By _msgError = By.xpath("//div[@id='content']//p[@class='message error']");
+    private final By _txtEmailAddress = By.id("email");
+    private final By _btnSendInstructions = By.xpath("//input[@value='Send Instructions']");
+    private final By _lblPasswordReset = By.xpath("//legend[contains(text(),'Password Reset')]");
+    private final By _msgError = By.xpath("//p[@class='message error']");
 
     //Elements
 
-    protected WebElement getEmailAddress(){
+    protected WebElement getEmailAddressElememt(){
         return Constant.WEBDRIVER.findElement(_txtEmailAddress);
     }
 
-    protected WebElement getSendInstructions(){
+    protected WebElement getSendInstructionsElement(){
         return Constant.WEBDRIVER.findElement(_btnSendInstructions);
     }
 
-    protected  WebElement getPasswordReset(){
+    protected  WebElement getPasswordResetElement(){
         return Constant.WEBDRIVER.findElement(_lblPasswordReset);
     }
 
-    protected  WebElement getErrorMsg(){
+    protected  WebElement getErrorMsgElement(){
         return Constant.WEBDRIVER.findElement(_msgError);
     }
     //Methods
 
     public void sendInstructions(String username){
-        getEmailAddress().sendKeys(username);
-        getSendInstructions().click();
+        getEmailAddressElememt().sendKeys(username);
+        getSendInstructionsElement().click();
     }
     public String getPasswordResetText(){
-        return getPasswordReset().getText();
+        return getPasswordResetElement().getText();
     }
 
     public String getErrorMessage(){
-        return getErrorMsg().getText();
+        return getErrorMsgElement().getText();
     }
 
 }

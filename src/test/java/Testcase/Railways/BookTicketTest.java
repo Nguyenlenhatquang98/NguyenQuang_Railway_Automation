@@ -10,7 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class BookTicketTest extends Testbase {
+public class BookTicketTest extends TestBase {
 
     @BeforeMethod
     public void beforeMethod() {

@@ -7,17 +7,17 @@ import org.openqa.selenium.WebElement;
 public class ChangePasswordPage extends GeneralPage {
     //locators
 
-    private final By _lblChangePassword = By.xpath("//div[@id='content']/h1[text()='Change password']");
+    private final By _lblChangePassword = By.xpath("//h1[text()='Change password']");
 
     //Elements
 
-    protected WebElement getLblChangePassword() {
+    protected WebElement getChangePasswordElement() {
         return Constant.WEBDRIVER.findElement(_lblChangePassword);
     }
 
     //Methods
 
     public String getChangePassword() {
-        return getLblChangePassword().getText();
+        return getChangePasswordElement().getText();
     }
 }

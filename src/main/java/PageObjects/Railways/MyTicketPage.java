@@ -9,19 +9,19 @@ public class MyTicketPage extends GeneralPage {
 
     //locators
 
-    private final By _lblManageTicket = By.xpath("//div[@id='content']//h1[text()='Manage Tickets']");
+    private final By _lblManageTicket = By.xpath("//h1[text()='Manage Tickets']");
     private final By _lblNoteMsg = By.xpath("//div[@class='message']/li[contains(text(),'0 ticket')]");
 
     //Elements
 
-    protected WebElement getLblMangeTicket() {
+    protected WebElement getManageTicketElement() {
         return Constant.WEBDRIVER.findElement(_lblManageTicket);
     }
 
     //Methods
 
     public String getManageTicket() {
-        return getLblMangeTicket().getText();
+        return getManageTicketElement().getText();
     }
 
     public By cancelTicket(int row) {

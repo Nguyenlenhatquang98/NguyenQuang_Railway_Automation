@@ -8,15 +8,15 @@ public class GeneralPage {
 
     // Locators
 
-    private final By _tabLogin = By.xpath("//div[@id='menu']//a[@href='/Account/Login.cshtml']");
-    private final By _tabLogout = By.xpath("//div[@id='menu']//a[@href='/Account/Logout']");
-    private final By _tabContact = By.xpath("//div[@id='menu']//a[@href='/Page/Contact.cshtml']");
+    private final By _tabLogin = By.xpath("//a[@href='/Account/Login.cshtml']");
+    private final By _tabLogout = By.xpath("//a[@href='/Account/Logout']");
+    private final By _tabContact = By.xpath("//a[@href='/Page/Contact.cshtml']");
     private final By _lblWelcomeMessage = By.xpath("//div[@class='account']/strong[normalize-space(text())]");
-    private final By _tabBookTicket = By.xpath("//div[@id='menu']//a[@href='/Page/BookTicketPage.cshtml']");
-    private final By _tabMyTicket = By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']");
-    private final By _tabChangePassword = By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']");
-    private final By _tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
-    private final By _tabTicketPrice = By.xpath("//div[@id='menu']//a[@href='/Page/TrainPriceListPage.cshtml']");
+    private final By _tabBookTicket = By.xpath("//a[@href='/Page/BookTicketPage.cshtml']");
+    private final By _tabMyTicket = By.xpath("//a[@href='/Page/ManageTicket.cshtml']");
+    private final By _tabChangePassword = By.xpath("//a[@href='/Account/ChangePassword.cshtml']");
+    private final By _tabRegister = By.xpath("//a[@href='/Account/Register.cshtml']");
+    private final By _tabTicketPrice = By.xpath("//a[@href='/Page/TrainPriceListPage.cshtml']");
 
     // Elements
 
@@ -32,7 +32,7 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(_tabContact);
     }
 
-    protected WebElement getlblWelcomeMessage() {
+    protected WebElement getWelcomeMessageElement() {
         return Constant.WEBDRIVER.findElement(_lblWelcomeMessage);
     }
 
@@ -60,7 +60,7 @@ public class GeneralPage {
     // Methods
 
     public String getWelcomeMessage() {
-        return this.getlblWelcomeMessage().getText();
+        return this.getWelcomeMessageElement().getText();
     }
 
     public LoginPage gotoLoginPage() {
@@ -167,7 +167,7 @@ public class GeneralPage {
     }
 
     public String getWelcomeUser() {
-        return getlblWelcomeMessage().getText();
+        return getWelcomeMessageElement().getText();
     }
 
 }

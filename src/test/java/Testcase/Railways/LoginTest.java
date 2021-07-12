@@ -5,14 +5,13 @@ import Common.Constant.Constant;
 import Model.Account;
 import PageObjects.Railways.ChangePasswordPage;
 import PageObjects.Railways.MyTicketPage;
-import com.google.common.base.Verify;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-public class LoginTest extends Testbase {
+public class LoginTest extends TestBase {
 
     @BeforeMethod
     public void beforeMethod() {
@@ -40,7 +39,7 @@ public class LoginTest extends Testbase {
     public void TC02() {
 
         loginPage.login(Constant.EMPTY_DATA, Constant.PASSWORD);
-        String actualMsg = loginPage.getLblLoginErrorMsg().getText();
+        String actualMsg = loginPage.getLoginErrorMsg();
         String expectedMsg = Constant.CHECK_MSG_BLANK;
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected");
     }
@@ -49,7 +48,7 @@ public class LoginTest extends Testbase {
     public void TC03() {
 
         loginPage.login(Constant.USERNAME, Constant.INVALID_PASSWORD);
-        String actualMsg = loginPage.getLblLoginErrorMsg().getText();
+        String actualMsg = loginPage.getLoginErrorMsg();
         String expectedMsg = Constant.CHECK_MSG_INVALID;
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected");
 

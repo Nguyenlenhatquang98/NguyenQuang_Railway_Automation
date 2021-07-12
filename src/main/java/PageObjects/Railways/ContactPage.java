@@ -8,17 +8,17 @@ public class ContactPage extends GeneralPage {
 
     // Locators
 
-    private final By _email = By.xpath("//div[@id='content']//a[@href='mailto:thanh.viet.le@logigear.com']");
+    private final By _lblEmail = By.xpath("//a[@href='mailto:thanh.viet.le@logigear.com']");
 
     // Elements
 
-    protected WebElement getEmail() {
-        return Constant.WEBDRIVER.findElement(_email);
+    protected WebElement getEmailElement() {
+        return Constant.WEBDRIVER.findElement(_lblEmail);
     }
 
     // Methods
 
     public String getEmailHref() {
-        return getEmail().getAttribute("href");
+        return getEmailElement().getAttribute("href");
     }
 }
