@@ -10,7 +10,7 @@ public class MyTicketPage extends GeneralPage {
     //locators
 
     private final By _lblManageTicket = By.xpath("//h1[text()='Manage Tickets']");
-    private final By _lblNoteMsg = By.xpath("//div[@class='message']/li[contains(text(),'0 ticket')]");
+
 
     //Elements
 
@@ -40,10 +40,6 @@ public class MyTicketPage extends GeneralPage {
         } else {
             return true;
         }
-    }
-
-    public String getErrorMsg() {
-        return Constant.WEBDRIVER.findElement(_lblNoteMsg).getText();
     }
 
 }

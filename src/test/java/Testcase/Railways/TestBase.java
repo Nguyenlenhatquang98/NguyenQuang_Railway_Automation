@@ -6,13 +6,12 @@ import Common.WebDriverManager.WebDriverManager;
 import Model.Account;
 import Model.Ticket;
 import PageObjects.Railways.*;
-import org.checkerframework.checker.units.qual.C;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 
 public class TestBase {
+
 
     public GeneralPage generalPage = new GeneralPage();
     public HomePage homepage = new HomePage();
@@ -24,6 +23,7 @@ public class TestBase {
     public MyTicketPage myTicketPage;
     public Account account;
     public Ticket ticket;
+
 
     @BeforeClass
     public void BeforeClass() {

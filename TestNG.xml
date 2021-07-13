@@ -3,8 +3,8 @@
 <suite name="Suite" >
     <test name="Test 1">
         <classes>
-            <class name="Testcase.Railways.TestParalle"></class>
             <class name="Testcase.Railways.LoginTest"></class>
+            <class name="Testcase.Railways.RegisterTest"></class>
         </classes>
     </test>
 </suite>
