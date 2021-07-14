@@ -46,7 +46,8 @@ public class BookTicketTest extends TestBase {
     @Test(description = "User can open 'Book ticket' page by click on 'Book ticket' link in 'Ticket price'")
     public void TC15() {
         ticketPricePage = homepage.gotoTicketPricePage();
-        bookTicketPage = ticketPricePage.SelectOption(ticket);
+        ticketPricePage.checkPriceFromTicketPrice(ticket);
+        bookTicketPage = ticketPricePage.bookTicketFromticketPrice(ticket);
         Assert.assertEquals(bookTicketPage.getDepartStationCheck(), Constant.DEPART_FROM, "Depart Station was incorrect");
         Assert.assertEquals(bookTicketPage.getArriveStationCheck(), Constant.ARRIVE_AT, "Arrive Station was incorrect");
         Assert.assertEquals(bookTicketPage.getSeatTypeCheck(), Constant.SEAT_TYPE, "Seat type was incorrect");

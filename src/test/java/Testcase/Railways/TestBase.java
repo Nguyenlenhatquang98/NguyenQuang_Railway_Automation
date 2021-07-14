@@ -23,7 +23,8 @@ public class TestBase {
     public MyTicketPage myTicketPage;
     public Account account;
     public Ticket ticket;
-
+    public TimetablePage timetablePage;
+    public ChangePasswordPage changePasswordPage;
 
     @BeforeClass
     public void BeforeClass() {

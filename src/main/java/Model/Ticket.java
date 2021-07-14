@@ -16,6 +16,13 @@ public class Ticket {
         this.SEATTYPE = Constant.SEAT_TYPE;
     }
 
+    public Ticket(String DEPARTFROM, String ARRIVEAT){
+        this.DEPARTDATE = Constant.DEPART_DATE;
+        this.DEPARTFROM = DEPARTFROM;
+        this.ARRIVEAT = ARRIVEAT;
+        this.SEATTYPE = Constant.SEAT_TYPE;
+    }
+
     public String getDEPARTDATE() {
         return this.DEPARTDATE;
     }

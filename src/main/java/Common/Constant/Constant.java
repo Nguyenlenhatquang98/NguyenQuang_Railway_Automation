@@ -37,4 +37,6 @@ public class Constant {
     public static final int NUMBER_OF_DATE = 5;
     public static final int ROW_TICKET_CANCEL = 1;
     public static final int AMOUNT_OF_LOGIN = 6;
+    public static final String NEW_PASSWORD = "nguyenlenhatquang1";
+    public static final String CHECK_MSG_PASSWORD_UPDATE_SUCCESS="Your password has been updated!";
 }

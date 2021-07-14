@@ -13,11 +13,15 @@ public class TicketPricePage extends GeneralPage {
     // Methods
 
 
-    public BookTicketPage SelectOption(Ticket ticket) {
-        String XPathCheckPrice = String.format("//a[contains(@href,'id1=" + "%d" + "&id2=" + "%d')]", changeCityToIndex(ticket.getDEPARTFROM()), changeCityToIndex(ticket.getARRIVEAT()));
+    public TicketPricePage checkPriceFromTicketPrice(Ticket ticket) {
+        String XPathCheckPrice = String.format("//a[@href='TicketPricePage.cshtml?id1=" + "%d" + "&id2=" + "%d']", changeCityToIndex(ticket.getDEPARTFROM()), changeCityToIndex(ticket.getARRIVEAT()));
         By _btnCheckPrice = By.xpath(XPathCheckPrice);
         Constant.WEBDRIVER.findElement(_btnCheckPrice).click();
-        String XPathBookTicket = String.format("//a[contains(@href,'id1=" + "%d" + "&id2=" + "%d" + "&id3=" + "%d')]", changeCityToIndex(ticket.getDEPARTFROM()), changeCityToIndex(ticket.getARRIVEAT()), changeSeatTypeToIndex(ticket.getSEATTYPE()));
+        return new TicketPricePage();
+    }
+
+    public BookTicketPage bookTicketFromticketPrice(Ticket ticket){
+        String XPathBookTicket = String.format("//a[@href='BookTicketPage.cshtml?id1=" + "%d" + "&id2=" + "%d" + "&id3=" + "%d']", changeCityToIndex(ticket.getDEPARTFROM()), changeCityToIndex(ticket.getARRIVEAT()), changeSeatTypeToIndex(ticket.getSEATTYPE()));
         By _btnBookTicket = By.xpath(XPathBookTicket);
         Constant.WEBDRIVER.findElement(_btnBookTicket).click();
         return new BookTicketPage();

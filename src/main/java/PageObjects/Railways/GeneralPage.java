@@ -17,6 +17,7 @@ public class GeneralPage {
     private final By _tabChangePassword = By.xpath("//a[@href='/Account/ChangePassword.cshtml']");
     private final By _tabRegister = By.xpath("//a[@href='/Account/Register.cshtml']");
     private final By _tabTicketPrice = By.xpath("//a[@href='/Page/TrainPriceListPage.cshtml']");
+    private final By _tabTimetable = By.xpath("//a[@href='TrainTimeListPage.cshtml']");
 
     // Elements
 
@@ -56,6 +57,9 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(_tabTicketPrice);
     }
 
+    protected WebElement getTabTimetable(){
+        return Constant.WEBDRIVER.findElement(_tabTimetable);
+    }
 
     // Methods
 
@@ -96,6 +100,11 @@ public class GeneralPage {
     public ChangePasswordPage gotoChangePasswordPage() {
         this.getTabChangePassword().click();
         return new ChangePasswordPage();
+    }
+
+    public TimetablePage gotoTimetablePage(){
+        this.getTabTimetable().click();
+        return new TimetablePage();
     }
 
     public boolean isElementExist(By locator) {
