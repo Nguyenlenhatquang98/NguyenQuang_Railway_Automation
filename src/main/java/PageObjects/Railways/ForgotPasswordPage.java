@@ -14,32 +14,33 @@ public class ForgotPasswordPage extends GeneralPage {
 
     //Elements
 
-    protected WebElement getEmailAddressElememt(){
+    protected WebElement getEmailAddressElememt() {
         return Constant.WEBDRIVER.findElement(_txtEmailAddress);
     }
 
-    protected WebElement getSendInstructionsElement(){
+    protected WebElement getSendInstructionsElement() {
         return Constant.WEBDRIVER.findElement(_btnSendInstructions);
     }
 
-    protected  WebElement getPasswordResetElement(){
+    protected WebElement getPasswordResetElement() {
         return Constant.WEBDRIVER.findElement(_lblPasswordReset);
     }
 
-    protected  WebElement getErrorMsgElement(){
+    protected WebElement getErrorMsgElement() {
         return Constant.WEBDRIVER.findElement(_msgError);
     }
     //Methods
 
-    public void sendInstructions(String username){
+    public void sendInstructions(String username) {
         getEmailAddressElememt().sendKeys(username);
         getSendInstructionsElement().click();
     }
-    public String getPasswordResetText(){
+
+    public String getPasswordResetText() {
         return getPasswordResetElement().getText();
     }
 
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return getErrorMsgElement().getText();
     }
 

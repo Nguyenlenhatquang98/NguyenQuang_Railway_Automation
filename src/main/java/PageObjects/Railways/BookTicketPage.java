@@ -67,7 +67,6 @@ public class BookTicketPage extends GeneralPage {
         getBookTicketElement().click();
     }
 
-
     public String getDepartStationCheck() {
         return Constant.WEBDRIVER.findElement(_lblDepartFrom).getText();
     }
@@ -91,7 +90,6 @@ public class BookTicketPage extends GeneralPage {
     public String getBookSeatType() {
         return getSeatTypeElement().getText();
     }
-
 
     public String getErrorForm() {
         return Constant.WEBDRIVER.findElement(_lblErrorForm).getText();

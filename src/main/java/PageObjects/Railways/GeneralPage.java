@@ -57,7 +57,7 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(_tabTicketPrice);
     }
 
-    protected WebElement getTabTimetable(){
+    protected WebElement getTabTimetable() {
         return Constant.WEBDRIVER.findElement(_tabTimetable);
     }
 
@@ -102,7 +102,7 @@ public class GeneralPage {
         return new ChangePasswordPage();
     }
 
-    public TimetablePage gotoTimetablePage(){
+    public TimetablePage gotoTimetablePage() {
         this.getTabTimetable().click();
         return new TimetablePage();
     }

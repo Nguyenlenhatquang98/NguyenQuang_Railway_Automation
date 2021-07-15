@@ -45,8 +45,6 @@ public class LoginPage extends GeneralPage {
     // Methods
 
 
-
-
     public GeneralPage login(String username, String password) {
         this.getUsernameElement().sendKeys(username);
         this.getPasswordElement().sendKeys(password);
@@ -57,7 +55,6 @@ public class LoginPage extends GeneralPage {
             return new HomePage();
         }
     }
-
 
 
     public String getUnableMsgExist(int n) {

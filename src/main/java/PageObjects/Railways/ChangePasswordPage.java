@@ -21,22 +21,28 @@ public class ChangePasswordPage extends GeneralPage {
     protected WebElement getChangePasswordElement() {
         return Constant.WEBDRIVER.findElement(_lblChangePassword);
     }
-    protected WebElement getCurrentPasswordElement(){
+
+    protected WebElement getCurrentPasswordElement() {
         return Constant.WEBDRIVER.findElement(_txtCurrentPassword);
     }
-    protected WebElement getNewPasswordElement(){
+
+    protected WebElement getNewPasswordElement() {
         return Constant.WEBDRIVER.findElement(_txtNewPassword);
     }
-    protected WebElement getConfirmPassword(){
+
+    protected WebElement getConfirmPassword() {
         return Constant.WEBDRIVER.findElement(_txtConfirmPassword);
     }
-    protected WebElement getUpdatePasswordElement(){
+
+    protected WebElement getUpdatePasswordElement() {
         return Constant.WEBDRIVER.findElement(_btnChangePassword);
     }
-    protected WebElement getSuccessElement(){
+
+    protected WebElement getSuccessElement() {
         return Constant.WEBDRIVER.findElement(_msgSuccess);
     }
-    protected WebElement getErrorElement(){
+
+    protected WebElement getErrorElement() {
         return Constant.WEBDRIVER.findElement(_msgError);
     }
 
@@ -46,13 +52,15 @@ public class ChangePasswordPage extends GeneralPage {
         return getChangePasswordElement().getText();
     }
 
-    public String getSuccessMsg(){
+    public String getSuccessMsg() {
         return getSuccessElement().getText();
     }
-    public String getErrorMsg(){
+
+    public String getErrorMsg() {
         return getErrorElement().getText();
     }
-    public ChangePasswordPage changePassword(Account account, String newPassword){
+
+    public ChangePasswordPage changePassword(Account account, String newPassword) {
         getCurrentPasswordElement().sendKeys(account.getPassword());
         getNewPasswordElement().sendKeys(newPassword);
         getConfirmPassword().sendKeys(newPassword);

@@ -1,6 +1,5 @@
 package PageObjects.Railways;
 
-import Common.Common.Utilities;
 import Common.Constant.Constant;
 import Model.Ticket;
 import org.openqa.selenium.By;
@@ -18,18 +17,16 @@ public class TimetablePage extends GeneralPage {
 
     // Methods
 
-    public String getTrainTimetale(){
+    public String getTrainTimetable() {
         return timetableElement.getText();
     }
 
-    public TicketPricePage checkPriceFromTimetable(Ticket ticket){
-        //String xpathCheckPrice = String.format("//a[contains(@href,'id1=" + "%d" + "&id2=" + "%d')]", changeCityToIndex(DepartStation), changeCityToIndex(ArriveStation));
-        String xpathCheckPrice = "//a[@href='TicketPricePage.cshtml?id1=1&id2=2']";
+    public TicketPricePage checkPriceFromTimetable(Ticket ticket) {
+        String xpathCheckPrice = String.format("//a[contains(@href,'id1=" + "%d" + "&id2=" + "%d')]", changeCityToIndex(ticket.getDEPARTFROM()), changeCityToIndex(ticket.getARRIVEAT()));
         By _linkCheckPrice = By.xpath(xpathCheckPrice);
         Constant.WEBDRIVER.findElement(_linkCheckPrice).click();
         return new TicketPricePage();
     }
-
 
 
 }

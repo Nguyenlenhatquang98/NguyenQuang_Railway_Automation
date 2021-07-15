@@ -20,7 +20,7 @@ public class TicketPricePage extends GeneralPage {
         return new TicketPricePage();
     }
 
-    public BookTicketPage bookTicketFromticketPrice(Ticket ticket){
+    public BookTicketPage bookTicketFromTicketPrice(Ticket ticket) {
         String XPathBookTicket = String.format("//a[@href='BookTicketPage.cshtml?id1=" + "%d" + "&id2=" + "%d" + "&id3=" + "%d']", changeCityToIndex(ticket.getDEPARTFROM()), changeCityToIndex(ticket.getARRIVEAT()), changeSeatTypeToIndex(ticket.getSEATTYPE()));
         By _btnBookTicket = By.xpath(XPathBookTicket);
         Constant.WEBDRIVER.findElement(_btnBookTicket).click();
