@@ -7,6 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
 public class BookTicketPage extends GeneralPage {
 
     // Locators
@@ -22,7 +26,12 @@ public class BookTicketPage extends GeneralPage {
     private final By _lblDepartFrom = By.xpath("//select[@name='DepartStation']/option[@selected='selected']");
     private final By _lblArriveStation = By.xpath("//select[@name='ArriveStation']/option[@selected='selected']");
     private final By _lblSeatType = By.xpath("//select[@name='SeatType']/option[@selected='selected']");
-
+    private final By _lblDepartStationBooked = By.xpath("//th[text()='Depart Station']/parent::tr/following-sibling::tr/td[1]");
+    private final By _lblArriveStationBooked = By.xpath("//th[text()='Arrive Station']/parent::tr/following-sibling::tr/td[2]");
+    private final By _lblSeatTypeBooked = By.xpath("//th[text()='Seat Type']/parent::tr/following-sibling::tr/td[3]");
+    private final By _lblDepartDateBooked = By.xpath("//th[text()='Depart Date']/parent::tr/following-sibling::tr/td[4]");
+    private final By _lblAmountTicketBooked = By.xpath("//th[text()='Amount']/parent::tr/following-sibling::tr/td[7]");
+    private final By _msgBookedSuccessfully = By.xpath("//h1[text()='Ticket Booked Successfully!']");
 
     // Elements
 
@@ -50,22 +59,63 @@ public class BookTicketPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(_btnBookTicket);
     }
 
+
     // Methods
 
-    public void BookTicket(Ticket ticket, int amount) {
+    public void bookTicket(Ticket ticket, int amount) {
         Utilities.pageDownEnd();
-        Select departDateSelect = new Select(getDepartDateElement());
-        Select departFromSelect = new Select(getDepartFromElement());
-        Select arriveAtSelect = new Select(getArriveAtElement());
-        Select seatTypeSelect = new Select(getSeatTypeElement());
-        Select ticketAmountSelect = new Select(getTicketAmountElement());
-        departDateSelect.selectByVisibleText(ticket.getDEPARTDATE());
-        departFromSelect.selectByValue(Integer.toString(changeCityToIndex(ticket.getDEPARTFROM())));
-        arriveAtSelect.selectByValue(Integer.toString(changeCityToIndex(ticket.getARRIVEAT())));
-        seatTypeSelect.selectByValue(Integer.toString(changeSeatTypeToIndex(ticket.getSEATTYPE())));
-        ticketAmountSelect.selectByVisibleText(Integer.toString(amount));
+        if (!ticket.getDEPARTDATE().equals(Constant.EMPTY_DATA)) {
+            Select departDateSelect = new Select(getDepartDateElement());
+            departDateSelect.selectByVisibleText(ticket.getDEPARTDATE());
+        }
+        if (!ticket.getDEPARTFROM().equals(Constant.EMPTY_DATA)) {
+            Select departFromSelect = new Select(getDepartFromElement());
+            departFromSelect.selectByValue(Integer.toString(changeCityToIndex(ticket.getDEPARTFROM())));
+        }
+        if (!ticket.getARRIVEAT().equals(Constant.EMPTY_DATA)) {
+            Select arriveAtSelect = new Select(getArriveAtElement());
+            arriveAtSelect.selectByValue(Integer.toString(changeCityToIndex(ticket.getARRIVEAT())));
+        }
+        if (!ticket.getSEATTYPE().equals(Constant.EMPTY_DATA)) {
+            Select seatTypeSelect = new Select(getSeatTypeElement());
+            seatTypeSelect.selectByValue(Integer.toString(changeSeatTypeToIndex(ticket.getSEATTYPE())));
+        }
+        if (amount > 0) {
+            Select ticketAmountSelect = new Select(getTicketAmountElement());
+            ticketAmountSelect.selectByVisibleText(Integer.toString(amount));
+        }
         getBookTicketElement().click();
     }
+
+    public List<Integer> listIndex() {
+        List<Integer> numbers = new LinkedList<>();
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        return numbers;
+    }
+
+    public void bookTicketSeveralTime(Ticket ticket, int amount, int times) {
+        for (int i = 0; i < times; i++) {
+            Random random = new Random();
+            List<Integer> indexOfArrive = listIndex();
+            Utilities.pageDownEnd();
+            Select departDateSelect = new Select(getDepartDateElement());
+            Select departFromSelect = new Select(getDepartFromElement());
+            Select arriveAtSelect = new Select(getArriveAtElement());
+            Select seatTypeSelect = new Select(getSeatTypeElement());
+            Select ticketAmountSelect = new Select(getTicketAmountElement());
+            departDateSelect.selectByVisibleText(ticket.getDEPARTDATE());
+            departFromSelect.selectByValue(Integer.toString(changeCityToIndex(ticket.getDEPARTFROM())));
+            arriveAtSelect.selectByValue(Integer.toString(indexOfArrive.get(random.nextInt(indexOfArrive.size()))));
+            seatTypeSelect.selectByValue(Integer.toString(changeSeatTypeToIndex(ticket.getSEATTYPE())));
+            ticketAmountSelect.selectByVisibleText(Integer.toString(amount));
+            getBookTicketElement().click();
+            GeneralPage generalPage = new GeneralPage();
+            generalPage.gotoBookTicketPage();
+        }
+    }
+
 
     public String getDepartStationCheck() {
         return Constant.WEBDRIVER.findElement(_lblDepartFrom).getText();
@@ -79,16 +129,29 @@ public class BookTicketPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(_lblSeatType).getText();
     }
 
-    public String getBookDepartStation() {
-        return getDepartFromElement().getText();
+
+    public String getDepartStationBooked() {
+        return Constant.WEBDRIVER.findElement(_lblDepartStationBooked).getText();
     }
 
-    public String getBookArriveStation() {
-        return getArriveAtElement().getText();
+    public String getArriveStationBooked() {
+        return Constant.WEBDRIVER.findElement(_lblArriveStationBooked).getText();
     }
 
-    public String getBookSeatType() {
-        return getSeatTypeElement().getText();
+    public String getSeatTypeBooked() {
+        return Constant.WEBDRIVER.findElement(_lblSeatTypeBooked).getText();
+    }
+
+    public String getDepartDateBooked() {
+        return Constant.WEBDRIVER.findElement(_lblDepartDateBooked).getText();
+    }
+
+    public int getAmountTicketBooked() {
+        return Integer.parseInt(Constant.WEBDRIVER.findElement(_lblAmountTicketBooked).getText());
+    }
+
+    public String getBookedSuccessMsg() {
+        return Constant.WEBDRIVER.findElement(_msgBookedSuccessfully).getText();
     }
 
     public String getErrorForm() {
@@ -99,5 +162,13 @@ public class BookTicketPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(_lblErrorTicketAmount).getText();
     }
 
+
+    public boolean checkTicketInformation(Ticket ticket, int amount) {
+        if (!getDepartStationBooked().equals(ticket.getDEPARTFROM()) || !getArriveStationBooked().equals(ticket.getARRIVEAT()) || !getSeatTypeBooked().equals(ticket.getSEATTYPE()) || !getDepartDateBooked().equals(ticket.getDEPARTDATE()) || getAmountTicketBooked() != amount) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

@@ -28,15 +28,19 @@ public class Constant {
     public static final String CHECK_MSG_TICKET_AMOUNT_ERROR = "You have booked 10 tickets. You can book no more.";
     public static final String CHECK_MSG_PASSWORD_ERROR = "Invalid password length";
     public static final String CHECK_MSG_ID_ERROR = "Invalid ID length";
-    public static final String DEPART_DATE = Utilities.setDepartDate();
-    public static final String DEPART_FROM = "Sài Gòn";
+    public static final String DEPART_DATE = Utilities.setDepartDate(5);
+    public static final String DEPART_FROM = "Quảng Ngãi";
     public static final String ARRIVE_AT = "Huế";
-    public static final String SEAT_TYPE = "Soft seat";
+    public static final String SEAT_TYPE = "Hard bed";
     public static final int MAX_AMOUNT_OF_TICKET = 10;
-    public static final int A_TICKET = 1;
-    public static final int NUMBER_OF_DATE = 5;
+    public static final int ONE_TICKET = 1;
     public static final int ROW_TICKET_CANCEL = 1;
+    public static final int AMOUNT_OF_TICKET = 2;
     public static final int AMOUNT_OF_LOGIN = 6;
-    public static final String NEW_PASSWORD = "nguyenlenhatquang1";
-    public static final String CHECK_MSG_PASSWORD_UPDATE_SUCCESS="Your password has been updated!";
+    public static final int AMOUNT_OF_BOOK_TICKET = 7;
+    public static final String CHECK_MSG_BOOK_SUCCESS = "Ticket Booked Successfully!";
+    public static final String BOOK_ARRIVE_STATION = "Huế";
+    public static final String INVALID_DEPART_DATE = "16/7/2021";
+    public static final String CHECK_MSG_ERROR_FILTER = "The date format is wrong, date filter is ignored.\n" +
+            "Example of a proper date: Today is " + Utilities.setDepartDate(-4);
 }

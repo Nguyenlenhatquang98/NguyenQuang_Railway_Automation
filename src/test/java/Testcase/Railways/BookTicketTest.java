@@ -35,9 +35,9 @@ public class BookTicketTest extends TestBase {
     @Test(description = "User can't book more than 10 tickets")
     public void TC14() {
         bookTicketPage = homepage.gotoBookTicketPage();
-        bookTicketPage.BookTicket(ticket, Constant.MAX_AMOUNT_OF_TICKET);
+        bookTicketPage.bookTicket(ticket, Constant.MAX_AMOUNT_OF_TICKET);
         bookTicketPage.gotoBookTicketPage();
-        bookTicketPage.BookTicket(ticket, Constant.A_TICKET);
+        bookTicketPage.bookTicket(ticket, Constant.ONE_TICKET);
         Assert.assertEquals(bookTicketPage.getErrorForm(), Constant.CHECK_MSG_FORM_ERROR, "Error message not displayed correctly");
         Assert.assertEquals(bookTicketPage.getErrorAmountTicket(), Constant.CHECK_MSG_TICKET_AMOUNT_ERROR, "Error message not displayed correctly");
 
@@ -46,6 +46,7 @@ public class BookTicketTest extends TestBase {
     @Test(description = "User can open 'Book ticket' page by click on 'Book ticket' link in 'Ticket price'")
     public void TC15() {
         ticketPricePage = homepage.gotoTicketPricePage();
+        Utilities.pageDownEnd();
         ticketPricePage.checkPriceFromTicketPrice(ticket);
         bookTicketPage = ticketPricePage.bookTicketFromTicketPrice(ticket);
         Assert.assertEquals(bookTicketPage.getDepartStationCheck(), Constant.DEPART_FROM, "Depart Station was incorrect");
@@ -57,7 +58,7 @@ public class BookTicketTest extends TestBase {
     @Test(description = "User can cancel a ticket")
     public void TC16() {
         bookTicketPage = homepage.gotoBookTicketPage();
-        bookTicketPage.BookTicket(ticket, Constant.A_TICKET);
+        bookTicketPage.bookTicket(ticket, Constant.ONE_TICKET);
         myTicketPage = bookTicketPage.gotoMyTicketPage();
         By ticketDeleted = myTicketPage.cancelTicket(Constant.ROW_TICKET_CANCEL);
         boolean isTicketExist = myTicketPage.checkIdTicketExist(ticketDeleted);

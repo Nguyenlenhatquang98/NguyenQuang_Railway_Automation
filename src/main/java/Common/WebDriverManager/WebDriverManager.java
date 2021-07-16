@@ -36,6 +36,10 @@ public class WebDriverManager {
         }
     }
 
+    public int countElements(By locator) {
+        return driver.findElements(locator).size();
+    }
+
     public Alert switchToAlert() {
         return driver.switchTo().alert();
     }

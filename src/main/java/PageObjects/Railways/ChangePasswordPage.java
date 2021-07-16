@@ -1,7 +1,6 @@
 package PageObjects.Railways;
 
 import Common.Constant.Constant;
-import Model.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -13,8 +12,7 @@ public class ChangePasswordPage extends GeneralPage {
     private final By _txtNewPassword = By.id("newPassword");
     private final By _txtConfirmPassword = By.id("confirmPassword");
     private final By _btnChangePassword = By.xpath("//input[@value='Change Password']");
-    private final By _msgSuccess = By.xpath("//p[@class='message success']");
-    private final By _msgError = By.xpath("//p[@class='message error']");
+
 
     //Elements
 
@@ -38,13 +36,6 @@ public class ChangePasswordPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(_btnChangePassword);
     }
 
-    protected WebElement getSuccessElement() {
-        return Constant.WEBDRIVER.findElement(_msgSuccess);
-    }
-
-    protected WebElement getErrorElement() {
-        return Constant.WEBDRIVER.findElement(_msgError);
-    }
 
     //Methods
 
@@ -52,19 +43,4 @@ public class ChangePasswordPage extends GeneralPage {
         return getChangePasswordElement().getText();
     }
 
-    public String getSuccessMsg() {
-        return getSuccessElement().getText();
-    }
-
-    public String getErrorMsg() {
-        return getErrorElement().getText();
-    }
-
-    public ChangePasswordPage changePassword(Account account, String newPassword) {
-        getCurrentPasswordElement().sendKeys(account.getPassword());
-        getNewPasswordElement().sendKeys(newPassword);
-        getConfirmPassword().sendKeys(newPassword);
-        getUpdatePasswordElement().click();
-        return new ChangePasswordPage();
-    }
 }

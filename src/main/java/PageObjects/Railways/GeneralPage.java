@@ -17,7 +17,6 @@ public class GeneralPage {
     private final By _tabChangePassword = By.xpath("//a[@href='/Account/ChangePassword.cshtml']");
     private final By _tabRegister = By.xpath("//a[@href='/Account/Register.cshtml']");
     private final By _tabTicketPrice = By.xpath("//a[@href='/Page/TrainPriceListPage.cshtml']");
-    private final By _tabTimetable = By.xpath("//a[@href='TrainTimeListPage.cshtml']");
 
     // Elements
 
@@ -57,15 +56,8 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(_tabTicketPrice);
     }
 
-    protected WebElement getTabTimetable() {
-        return Constant.WEBDRIVER.findElement(_tabTimetable);
-    }
 
     // Methods
-
-    public String getWelcomeMessage() {
-        return this.getWelcomeMessageElement().getText();
-    }
 
     public LoginPage gotoLoginPage() {
         this.getTabLogin().click();
@@ -100,11 +92,6 @@ public class GeneralPage {
     public ChangePasswordPage gotoChangePasswordPage() {
         this.getTabChangePassword().click();
         return new ChangePasswordPage();
-    }
-
-    public TimetablePage gotoTimetablePage() {
-        this.getTabTimetable().click();
-        return new TimetablePage();
     }
 
     public boolean isElementExist(By locator) {
@@ -155,13 +142,6 @@ public class GeneralPage {
         return new HomePage();
     }
 
-    public boolean checkWelcomeExist() {
-        if (isElementExist(this._lblWelcomeMessage)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public boolean checkTabsDisplayed() {
         Boolean check1, check2, check3;

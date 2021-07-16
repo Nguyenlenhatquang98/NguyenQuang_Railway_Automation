@@ -34,12 +34,12 @@ public class Utilities {
         Constant.WEBDRIVER.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
     }
 
-    public static String setDepartDate() {
+    public static String setDepartDate(int date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
         Date dt = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(dt);
-        c.add(Calendar.DATE, Constant.NUMBER_OF_DATE);
+        c.add(Calendar.DATE, 4 + date);
         dt = c.getTime();
         return dateFormat.format(dt);
     }
